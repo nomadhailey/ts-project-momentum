@@ -32,12 +32,12 @@ export default function MainTodo() {
   const addMainTodo = () => {
     setInputIsShown(true);
   };
-  const onMouseOver = () => {
-    setButtonIsShown(true);
-  };
-  const onMouseOut = () => {
-    setButtonIsShown(false);
-  };
+  // const onMouseOver = () => {
+  //   setButtonIsShown(true);
+  // };
+  // const onMouseOut = () => {
+  //   setButtonIsShown(false);
+  // };
   console.log(buttonIsShown);
   return (
     <StyledDiv>
@@ -51,12 +51,13 @@ export default function MainTodo() {
       ) : (
         <div className="mainTodoListWrapper">
           <h4>TODAY</h4>
+          {/* 여기 */}
           <div
-            className="mainTodoList"
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
+            className="mainTodoList hover"
+            // onMouseOver={onMouseOver}
+            // onMouseOut={onMouseOut}
           >
-            <label className={classNames({ buttonIsShown })}>
+            {/* <label className={classNames({ buttonIsShown })}>
               <input
                 type="checkbox"
                 checked={checked}
@@ -65,22 +66,53 @@ export default function MainTodo() {
               <div className="checkBtn">
                 {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
               </div>
-            </label>
+            </label> */}
 
             <span className={classNames("mainTodo", { checked })}>
               {mainTodo}
             </span>
 
-            <div className={classNames("btns", { buttonIsShown })}>
+            {/* <div className={classNames("btns", { buttonIsShown })}>
               {checked ? (
                 <button onClick={addMainTodo}>+</button>
               ) : (
                 <button onClick={removeMainTodo}>X</button>
               )}
-            </div>
+            </div> */}
           </div>
+          {/* 분리 */}
+          <div
+            className="mainTodoList no_hover"
+            // onMouseOver={onMouseOver}
+            // onMouseOut={onMouseOut}
+          >
+            {/* <label className={classNames({ buttonIsShown })}>
+              <input
+                type="checkbox"
+                checked={checked}
+                onClick={checkMainTodo}
+              />
+              <div className="checkBtn">
+                {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+              </div>
+            </label> */}
+
+            <span className={classNames("mainTodo", { checked })}>
+              {mainTodo}
+            </span>
+
+            {/* <div className={classNames("btns", { buttonIsShown })}>
+              {checked ? (
+                <button onClick={addMainTodo}>+</button>
+              ) : (
+                <button onClick={removeMainTodo}>X</button>
+              )}
+            </div> */}
+          </div>
+          {/* 분리 */}
         </div>
       )}
+      {/* 여기까지 */}
     </StyledDiv>
   );
 }

@@ -26,17 +26,42 @@ export const StyledDiv = styled.div`
     /* display: flex; */
     /* justify-content: center;
     align-items: center; */
+    position: relative;
     width: 100%;
+    height: 80px;
     h4 {
       font-size: 1.2rem;
       font-weight: bold;
     }
     .mainTodoList {
+      position: absolute;
+
+      transform: translateX(-50%);
       display: flex;
       justify-content: center;
+      &.hover {
+        left: 50%;
+        border: 1px solid red;
+        opacity: 0;
+        &:hover {
+          opacity: 1;
+          background: red;
+        }
+      }
+      &.no_hover {
+        border: 1px solid blue;
+        opacity: 1;
+        left: 51%;
+        z-index: 10;
+        &:hover {
+          opacity: 0;
+          background: blue;
+        }
+      }
+
       label {
         transition: all 0.2s ease-in;
-        opacity: 0;
+        /* opacity: 0; */
         &.buttonIsShown {
           opacity: 1;
         }
@@ -56,6 +81,7 @@ export const StyledDiv = styled.div`
         }
       }
       .mainTodo {
+        /* position: absolute; */
         margin-right: 10px;
 
         &.checked {
@@ -64,7 +90,7 @@ export const StyledDiv = styled.div`
       }
       .btns {
         cursor: pointer;
-        opacity: 0;
+        /* opacity: 0; */
         transition: all 0.2s ease-in;
         &.buttonIsShown {
           opacity: 1;
