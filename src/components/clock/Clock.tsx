@@ -22,7 +22,7 @@ export default function Clock() {
   return (
     <>
       <StyledDiv>
-        {hour}:{min < 10 ? `0${min}` : min}
+        {hour < 10 ? `0${hour}` : hour}:{min < 10 ? `0${min}` : min}
       </StyledDiv>
       <Greeting>
         {hour >= 5 && hour < 12

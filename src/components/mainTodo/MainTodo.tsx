@@ -33,8 +33,12 @@ export default function MainTodo() {
     setInputIsShown(true);
   };
   const onMouseOver = () => {
-    setButtonIsShown(!buttonIsShown);
+    setButtonIsShown(true);
   };
+  const onMouseOut = () => {
+    setButtonIsShown(false);
+  };
+  console.log(buttonIsShown);
   return (
     <StyledDiv>
       {inputIsShown ? (
@@ -47,7 +51,11 @@ export default function MainTodo() {
       ) : (
         <div className="mainTodoListWrapper">
           <h4>TODAY</h4>
-          <div className="mainTodoList" onMouseOver={onMouseOver}>
+          <div
+            className="mainTodoList"
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+          >
             <label className={classNames({ buttonIsShown })}>
               <input
                 type="checkbox"

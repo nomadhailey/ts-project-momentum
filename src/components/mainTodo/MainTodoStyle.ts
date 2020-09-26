@@ -35,6 +35,7 @@ export const StyledDiv = styled.div`
       display: flex;
       justify-content: center;
       label {
+        transition: all 0.2s ease-in;
         opacity: 0;
         &.buttonIsShown {
           opacity: 1;
@@ -64,6 +65,7 @@ export const StyledDiv = styled.div`
       .btns {
         cursor: pointer;
         opacity: 0;
+        transition: all 0.2s ease-in;
         &.buttonIsShown {
           opacity: 1;
         }
