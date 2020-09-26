@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StyledDiv, Greeting } from "./ClockStyle";
+import { BsThreeDots } from "react-icons/bs";
 
 export default function Clock() {
+  // 시간
   const [date, setDate] = useState(new Date());
   const hour = date.getHours();
   const min = date.getMinutes();
@@ -19,18 +21,63 @@ export default function Clock() {
     };
   }, []);
 
+  // 이름 바꾸기
+  const [name, setName] = useState("");
+  const [inputIsHidden, setInputIsHidden] = useState(true);
+  const onChangeName = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setName(e.target.value);
+  };
+  const submitName = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    localStorage.setItem("name", name);
+    setInputIsHidden(!inputIsHidden);
+  };
+  const onDoubleClickName = () => {
+    setInputIsHidden(!inputIsHidden);
+  };
+  useEffect(() => {
+    const getName = localStorage.getItem("name");
+    if (getName !== null) {
+      setName(getName);
+    }
+  }, []);
   return (
     <>
       <StyledDiv>
         {hour < 10 ? `0${hour}` : hour}:{min < 10 ? `0${min}` : min}
       </StyledDiv>
       <Greeting>
-        {hour >= 5 && hour < 12
-          ? "Good morning"
-          : hour >= 12 && hour < 18
-          ? "Good afternoon"
-          : "Good evening"}
-        , hailey.
+        <div className="greetingWrapper">
+          {hour >= 5 && hour < 12
+            ? "Good morning"
+            : hour >= 12 && hour < 17
+            ? "Good afternoon"
+            : "Good evening"}
+          ,
+        </div>
+        <div className="nameWrapper">
+          {inputIsHidden ? (
+            <span onDoubleClick={onDoubleClickName}>
+              <span>{name}.</span>
+            </span>
+          ) : (
+            <form onSubmit={submitName}>
+              <input
+                type="text"
+                value={name}
+                onChange={onChangeName}
+                // size={5}
+                maxLength={22}
+              />
+            </form>
+          )}
+          <BsThreeDots className="threeDots" />
+          {/* <form onSubmit={submitName}>
+        <input type="text" value={name} onChange={onChangeName} />
+        </form> */}
+        </div>
       </Greeting>
     </>
   );

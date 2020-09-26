@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyledDiv } from "./MainTodoStyle";
 import classNames from "classnames";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
+
+const random = ["Great Work!", "Nice.", "Way to go!", "Good job!"];
 
 export default function MainTodo() {
   const [mainTodo, setMainTodo] = useState("");
@@ -25,20 +27,29 @@ export default function MainTodo() {
   const checkMainTodo = () => {
     setChecked(!checked);
   };
+
   const removeMainTodo = () => {
-    // setMainTodo("");
+    setMainTodo("");
     setInputIsShown(true);
   };
   const addMainTodo = () => {
+    setMainTodo("");
     setInputIsShown(true);
   };
-  // const onMouseOver = () => {
-  //   setButtonIsShown(true);
-  // };
-  // const onMouseOut = () => {
-  //   setButtonIsShown(false);
-  // };
-  console.log(buttonIsShown);
+  const onMouseOver = () => {
+    setButtonIsShown(true);
+  };
+  const onMouseOut = () => {
+    setButtonIsShown(false);
+  };
+  useEffect(() => {
+    const getTodo = localStorage.getItem("mainTodo");
+    if (getTodo !== null) {
+      setMainTodo(getTodo);
+      setInputIsShown(false);
+    }
+  }, []);
+
   return (
     <StyledDiv>
       {inputIsShown ? (
@@ -51,13 +62,12 @@ export default function MainTodo() {
       ) : (
         <div className="mainTodoListWrapper">
           <h4>TODAY</h4>
-          {/* 여기 */}
           <div
-            className="mainTodoList hover"
-            // onMouseOver={onMouseOver}
-            // onMouseOut={onMouseOut}
+            className="mainTodoList"
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
           >
-            {/* <label className={classNames({ buttonIsShown })}>
+            <label className={classNames({ buttonIsShown })}>
               <input
                 type="checkbox"
                 checked={checked}
@@ -66,53 +76,30 @@ export default function MainTodo() {
               <div className="checkBtn">
                 {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
               </div>
-            </label> */}
+            </label>
 
             <span className={classNames("mainTodo", { checked })}>
               {mainTodo}
             </span>
 
-            {/* <div className={classNames("btns", { buttonIsShown })}>
+            <div className={classNames("btns", { buttonIsShown })}>
               {checked ? (
                 <button onClick={addMainTodo}>+</button>
               ) : (
                 <button onClick={removeMainTodo}>X</button>
               )}
-            </div> */}
+            </div>
           </div>
-          {/* 분리 */}
-          <div
-            className="mainTodoList no_hover"
-            // onMouseOver={onMouseOver}
-            // onMouseOut={onMouseOut}
-          >
-            {/* <label className={classNames({ buttonIsShown })}>
-              <input
-                type="checkbox"
-                checked={checked}
-                onClick={checkMainTodo}
-              />
-              <div className="checkBtn">
-                {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-              </div>
-            </label> */}
-
-            <span className={classNames("mainTodo", { checked })}>
-              {mainTodo}
-            </span>
-
-            {/* <div className={classNames("btns", { buttonIsShown })}>
-              {checked ? (
-                <button onClick={addMainTodo}>+</button>
-              ) : (
-                <button onClick={removeMainTodo}>X</button>
-              )}
-            </div> */}
+          {/* {checked && (
+            <div className="compliments">
+              {random[Math.floor(Math.random() * 4)]}
+            </div>
+          )} */}
+          <div className={classNames("compliments", { checked })}>
+            {random[Math.floor(Math.random() * 4)]}
           </div>
-          {/* 분리 */}
         </div>
       )}
-      {/* 여기까지 */}
     </StyledDiv>
   );
 }
