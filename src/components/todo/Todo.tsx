@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyledDiv } from "./TodoStyle";
+import ModalTodo from "./ModalTodo";
 
 export default function Todo() {
-  return <StyledDiv>Todo</StyledDiv>;
+  const [modalIsShown, setModalIsShown] = useState(false);
+  const clickTodo = () => {
+    setModalIsShown(!modalIsShown);
+  };
+  return (
+    <>
+      <StyledDiv>
+        <button onClick={clickTodo}>Todo</button>
+        {modalIsShown && <ModalTodo />}
+      </StyledDiv>
+    </>
+  );
 }

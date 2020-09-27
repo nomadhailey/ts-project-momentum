@@ -5,10 +5,13 @@ const GlobalContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
   .emptySpace {
     width: 100vw;
-    height: 17vh;
+    /* height: 17vh; */
+    height: 150px;
     border: 1px solid red;
   }
 `;
@@ -29,6 +32,7 @@ export const Bottom = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid black;
+  background: green;
+  padding: 10px 15px;
 `;
 export default GlobalContainer;

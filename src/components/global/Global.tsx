@@ -7,7 +7,7 @@ import Clock from "../clock/Clock";
 import Setting from "../setting/Setting";
 import Quotes from "../quotes/Quotes";
 import Todo from "../todo/Todo";
-
+// import ModalTodo from "../todo/ModalTodo";
 export default function () {
   return (
     <GlobalContainer>
@@ -25,6 +25,7 @@ export default function () {
         <Quotes />
         <Todo />
       </Bottom>
+      {/* <ModalTodo /> */}
     </GlobalContainer>
   );
 }

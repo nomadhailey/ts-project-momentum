@@ -43,9 +43,9 @@ export default function MainTodo() {
     setButtonIsShown(false);
   };
   useEffect(() => {
-    const getTodo = localStorage.getItem("mainTodo");
-    if (getTodo !== null) {
-      setMainTodo(getTodo);
+    const getMainTodo = localStorage.getItem("mainTodo");
+    if (getMainTodo !== null) {
+      setMainTodo(getMainTodo);
       setInputIsShown(false);
     }
   }, []);
