@@ -4,59 +4,67 @@ import TodoList from "./TodoList";
 import { BsThreeDots } from "react-icons/bs";
 import classNames from "classnames";
 
-// interface ModalTodoProps {
-//   className?: string;
+// type TodoType = {
+//   id: number;
+//   content: string;
+//   done: boolean;
+// };
+// interface TodoType {
+//   todos: [{ id: null | number; content: null | string; done: boolean }];
 // }
 export default function ModalTodo() {
   const [inputIsShown, setInputIsShown] = useState(false);
   const [newTodo, setNewTodo] = useState("");
-  // const [todoItem, setTodoItem] = useState({
-  //   id: 1,
-  //   todo: "",
-  // });
+  // const [todos, setTodos] = useState<TodoType[]>([
+  //   {
+  //     id: 0,
+  //     content: "",
+  //     done: false,
+  //   },
+  // ]);
   const [todos, setTodos] = useState([
-    {
-      id: 0,
-      content: "",
-      done: false,
-    },
+    // {
+    //   id: 0,
+    //   content: "",
+    //   done: false,
+    // },
   ] as any);
-
   const { id, content, done } = todos;
   const [todoListIsShown, setTodoListIsShown] = useState(false);
+  useEffect(() => {
+    const getTodoList = localStorage.getItem("todos");
+    if (typeof getTodoList === "string") {
+      const parsedGetTodoList = JSON.parse(getTodoList);
+
+      // if (getTodoList.length !== 0) {
+      if (parsedGetTodoList !== null) {
+        setTodos(parsedGetTodoList);
+      }
+    }
+  }, []);
+
   const onNewTodoClick = () => {
     setInputIsShown(!inputIsShown);
   };
+
   const nextId = useRef(1);
   const onSubmitNewTodo = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setTodoListIsShown(true);
-    setTodos([
-      ...todos,
-      {
-        id: nextId.current,
-        content: newTodo,
-        done: false,
-      },
-    ]);
+    setTodos([...todos, { id: nextId.current, content: newTodo, done: false }]);
     nextId.current += 1;
-    localStorage.setItem("todos", JSON.stringify(todos));
     setNewTodo("");
   };
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const onChangeNewTodo = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setNewTodo(e.target.value);
   };
-  let getTodoList = [];
-  const todoList = "todos";
-  useEffect(() => {
-    getTodoList = JSON.parse(localStorage.getItem(todoList) || "{}");
-    // if (getTodoList.length !== 0) {
-    if (getTodoList !== null) {
-      setTodos(getTodoList);
-    }
-  }, []);
+
   return (
     <StyledDiv className={classNames("todoWrapper", { todoListIsShown })}>
       <Top>

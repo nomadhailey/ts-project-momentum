@@ -6,8 +6,8 @@ import classNames from "classnames";
 interface TodoListProps {
   todos: [
     {
-      id: number;
-      content: string;
+      id: null | number;
+      content: null | string;
       done: boolean;
     }
   ];
