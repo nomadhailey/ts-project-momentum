@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const GlobalContainer = styled.div`
+  background: url(https://source.unsplash.com/collection/9585833/1600x900/daily);
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -32,7 +34,6 @@ export const Bottom = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: green;
   padding: 10px 15px;
 `;
 export default GlobalContainer;

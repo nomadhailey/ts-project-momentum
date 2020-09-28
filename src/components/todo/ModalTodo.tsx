@@ -4,39 +4,16 @@ import TodoList from "./TodoList";
 import { BsThreeDots } from "react-icons/bs";
 import classNames from "classnames";
 
-// type TodoType = {
-//   id: number;
-//   content: string;
-//   done: boolean;
-// };
-// interface TodoType {
-//   todos: [{ id: null | number; content: null | string; done: boolean }];
-// }
 export default function ModalTodo() {
   const [inputIsShown, setInputIsShown] = useState(false);
   const [newTodo, setNewTodo] = useState("");
-  // const [todos, setTodos] = useState<TodoType[]>([
-  //   {
-  //     id: 0,
-  //     content: "",
-  //     done: false,
-  //   },
-  // ]);
-  const [todos, setTodos] = useState([
-    // {
-    //   id: 0,
-    //   content: "",
-    //   done: false,
-    // },
-  ] as any);
+  const [todos, setTodos] = useState([] as any);
   const { id, content, done } = todos;
   const [todoListIsShown, setTodoListIsShown] = useState(false);
   useEffect(() => {
     const getTodoList = localStorage.getItem("todos");
     if (typeof getTodoList === "string") {
       const parsedGetTodoList = JSON.parse(getTodoList);
-
-      // if (getTodoList.length !== 0) {
       if (parsedGetTodoList !== null) {
         setTodos(parsedGetTodoList);
       }
@@ -47,12 +24,14 @@ export default function ModalTodo() {
     setInputIsShown(!inputIsShown);
   };
 
-  const nextId = useRef(1);
+  let generateId = todos.length
+    ? Math.max(...todos.map((todo: { id: any }) => todo.id)) + 1
+    : 1;
   const onSubmitNewTodo = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setTodoListIsShown(true);
-    setTodos([...todos, { id: nextId.current, content: newTodo, done: false }]);
-    nextId.current += 1;
+    setTodos([...todos, { id: generateId, content: newTodo, done: false }]);
+
     setNewTodo("");
   };
   useEffect(() => {

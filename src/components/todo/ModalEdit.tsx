@@ -21,13 +21,17 @@ const StyledDiv = styled.div`
   }
 `;
 export default function ModalEdit() {
+  const editTodo = () => {};
+  const deleteTodo = (e: { target: any }) => {
+    console.log(e.target); // <li>Delete</li>
+  };
   return (
     <StyledDiv>
       <ul>
-        <li>Edit</li>
+        <li onClick={editTodo}>Edit</li>
         <li>Move to Today</li>
         <li>Move to...</li>
-        <li>Delete</li>
+        <li onClick={deleteTodo}>Delete</li>
       </ul>
     </StyledDiv>
   );

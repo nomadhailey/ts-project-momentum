@@ -5,16 +5,14 @@ const fadeout = keyframes`
     opacity:1; 
   } 
   to {
-opacity : 0;
+  opacity : 0;
   }
 `;
 export const StyledDiv = styled.div`
-  background: orange;
   text-align: center;
   margin: 20px 0;
   font-size: 2.2rem;
   .inputMainTodoWrapper {
-    /* margin-top: 30px; */
     h3 {
       font-size: 1.9rem;
       font-weight: normal;
@@ -25,7 +23,6 @@ export const StyledDiv = styled.div`
       padding-top: 4px;
       border-bottom: 2px solid #fff;
       width: 480px;
-
       font-size: 1.8rem;
       font-weight: normal;
     }

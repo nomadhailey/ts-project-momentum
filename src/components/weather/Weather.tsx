@@ -1,5 +1,13 @@
-import React from "react";
-import { StyledDiv } from "./WeatherStyle";
+import React, { useState, useRef } from "react";
+import { StyledBtn } from "./WeatherStyle";
+
+import ModalWeather from "./ModalWeather";
+
 export default function Weather() {
-  return <StyledDiv>Weather</StyledDiv>;
+  return (
+    <StyledBtn>
+      <div>weather</div>
+      <ModalWeather />
+    </StyledBtn>
+  );
 }

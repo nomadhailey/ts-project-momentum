@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { StyledUl } from "./TodoListStyle";
 import classNames from "classnames";
+import ModalEdit from "./ModalEdit";
 
 interface TodoListProps {
   todos: [
@@ -19,7 +20,7 @@ export default function TodoList({ todos }: TodoListProps) {
     setChecked(!checked);
   };
   const clickDots = () => {
-    setEditIsShown(true);
+    setEditIsShown(!editIsShown);
   };
   return (
     <StyledUl>
@@ -32,6 +33,7 @@ export default function TodoList({ todos }: TodoListProps) {
                 {todo.content}
               </span>
               <BsThreeDots className="listThreeDots" onClick={clickDots} />
+              {editIsShown && <ModalEdit />}
             </li>
           )
       )}
