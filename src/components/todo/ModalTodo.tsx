@@ -8,6 +8,7 @@ export default function ModalTodo() {
   const [inputIsShown, setInputIsShown] = useState(false);
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([] as any);
+  // const [todos, setTodos] = useState<T>([]:T);
   const { id, content, done } = todos;
   const [todoListIsShown, setTodoListIsShown] = useState(false);
   useEffect(() => {
@@ -27,11 +28,11 @@ export default function ModalTodo() {
   let generateId = todos.length
     ? Math.max(...todos.map((todo: { id: any }) => todo.id)) + 1
     : 1;
-  const onSubmitNewTodo = (e: { preventDefault: () => void }) => {
+  // const onSubmitNewTodo = (e: { preventDefault: () => void }) => {
+  const onSubmitNewTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTodoListIsShown(true);
     setTodos([...todos, { id: generateId, content: newTodo, done: false }]);
-
     setNewTodo("");
   };
   useEffect(() => {

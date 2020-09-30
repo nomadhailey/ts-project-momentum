@@ -1,14 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { StyledDiv, Top, Center, Bottom } from "./ModalWeatherStyle";
 import { BsThreeDots } from "react-icons/bs";
-import axios from "axios";
-// import * as styles from "./weather-icons.css";
-// import * as styles2 from "./weather-icons-wind.css";
-// import * as weather-icons from "./weather-icons.css";
-// import * as weather-icons-wind from "./weather-icons-wind.css";
-const weatherIcons = require("./WeatherIcons.css");
-const weatherIconsWind = require("./WeatherIconsWind.css");
+import WeeklyWeather from "./WeeklyWeather";
 
+import "./weather-icons.css";
+import "./weather-icons-wind.css";
+
+const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const date = new Date();
+const today = date.getDay();
 const API_KEY = "b3fb0d709d10c02822333fb492ae1f50";
 interface cityType {
   name: string;
@@ -23,7 +24,12 @@ interface weatherType {
     ];
     temp: number;
   };
-  daily: [];
+  daily: [
+    {
+      weather: {};
+      temp: { max: number; min: number };
+    }
+  ];
   loading: boolean;
 }
 
@@ -33,7 +39,12 @@ export default function ModalWeather() {
       weather: [{ description: "", main: "" }],
       temp: 0,
     },
-    daily: [],
+    daily: [
+      {
+        weather: {},
+        temp: { max: 0, min: 0 },
+      },
+    ],
     loading: false,
   });
   const [city, setCity] = useState<cityType>({ name: "" });
@@ -45,6 +56,7 @@ export default function ModalWeather() {
     function geoError() {
       console.log("위치 정보를 가져올 수 없습니다.");
     }
+
     async function geoSuccess(position: { coords: any }) {
       const { coords } = position;
       const lat = coords.latitude;
@@ -87,6 +99,8 @@ export default function ModalWeather() {
       </Top>
       <Center>
         <i
+          // className={`${styles}.wi ${weather.current.weather[0].main}`}
+          // className={"Cloud"}
           className={"wi " + weather.current.weather[0].main}
           data-icon={"wi " + weather.current.weather[0].main}
         ></i>
@@ -94,7 +108,19 @@ export default function ModalWeather() {
           {Math.round(weather.current.temp)}° <span></span>
         </p>
       </Center>
-      <Bottom>날씨</Bottom>
+      <Bottom>
+        <ul>
+          {weather.daily.map((day, i) => (
+            <WeeklyWeather
+              // key={day.dt}
+              weather={day.weather}
+              temp={day.temp}
+              week={week[today]}
+              // week[0] = 일요일 ~ week[6] = 토요일
+            />
+          ))}
+        </ul>
+      </Bottom>
     </StyledDiv>
   );
 }

@@ -21,8 +21,8 @@
  */
 @font-face {
   font-family: 'weathericons';
-  src: url('../font/weathericons-regular-webfont.eot');
-  src: url('../font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../font/weathericons-regular-webfont.woff2') format('woff2'), url('../font/weathericons-regular-webfont.woff') format('woff'), url('../font/weathericons-regular-webfont.ttf') format('truetype'), url('../font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+  src: url('../../font/weathericons-regular-webfont.eot');
+  src: url('../../font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../font/weathericons-regular-webfont.woff2') format('woff2'), url('../../font/weathericons-regular-webfont.woff') format('woff'), url('../../font/weathericons-regular-webfont.ttf') format('truetype'), url('../../font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -69,7 +69,8 @@
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
 }
-.wi-day-sunny:before {
+.wi-day-sunny:before,
+.Clear::before {
   content: "\f00d";
 }
 .wi-day-cloudy:before {
@@ -282,7 +283,8 @@
 .wi-cloud:before {
   content: "\f041";
 }
-.wi-cloudy:before {
+.wi-cloudy:before,
+.Clouds::before {
   content: "\f013";
 }
 .wi-cloudy-gusts:before {
@@ -291,13 +293,25 @@
 .wi-cloudy-windy:before {
   content: "\f012";
 }
-.wi-fog:before {
+.wi-fog:before,
+.Mist::before,
+.Smoke::before,
+.Haze::before,
+.Dust::before,
+.Fog::before,
+.Sand::before,
+.Dust::before,
+.Ash::before,
+.Squall::before,
+.Tornado::before {
   content: "\f014";
 }
 .wi-hail:before {
   content: "\f015";
 }
-.wi-rain:before {
+.wi-rain:before,
+.Rain::before,
+.Drizzle::before {
   content: "\f019";
 }
 .wi-rain-mix:before {
@@ -336,7 +350,8 @@
 .wi-smoke:before {
   content: "\f062";
 }
-.wi-lightning:before {
+.wi-lightning:before,
+.Thunderstorm:before {
   content: "\f016";
 }
 .wi-raindrops:before {
@@ -348,7 +363,8 @@
 .wi-dust:before {
   content: "\f063";
 }
-.wi-snowflake-cold:before {
+.wi-snowflake-cold:before,
+.Snow::before {
   content: "\f076";
 }
 .wi-windy:before {
@@ -1366,7 +1382,7 @@
   content: "\f01b";
 }
 .wi-owm-701:before {
-  content: "\f014";
+  content: "\f01a";
 }
 .wi-owm-711:before {
   content: "\f062";
@@ -1549,7 +1565,7 @@
   content: "\f00a";
 }
 .wi-owm-day-701:before {
-  content: "\f003";
+  content: "\f009";
 }
 .wi-owm-day-711:before {
   content: "\f062";
@@ -1723,7 +1739,7 @@
   content: "\f02a";
 }
 .wi-owm-night-701:before {
-  content: "\f04a";
+  content: "\f029";
 }
 .wi-owm-night-711:before {
   content: "\f062";
