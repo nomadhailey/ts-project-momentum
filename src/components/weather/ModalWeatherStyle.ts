@@ -15,13 +15,15 @@ export const StyledDiv = styled.div`
   border: 1px solid black;
 `;
 export const Top = styled.div`
-  background: pink;
   display: flex;
+  p {
+    color: #aaa;
+  }
 `;
 export const Center = styled.div`
-  background: orange;
   display: flex;
   font-size: 3rem;
+  padding-bottom: 10px;
   border-bottom: 1px solid #ffffff;
   i {
     margin: auto 0;
@@ -31,5 +33,7 @@ export const Center = styled.div`
 export const Bottom = styled.div`
   ul {
     display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
   }
 `;

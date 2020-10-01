@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { StyledDiv, Top, Center, Bottom } from "./ModalWeatherStyle";
 import { BsThreeDots } from "react-icons/bs";
@@ -7,10 +7,11 @@ import WeeklyWeather from "./WeeklyWeather";
 import "./weather-icons.css";
 import "./weather-icons-wind.css";
 
+const API_KEY = "b3fb0d709d10c02822333fb492ae1f50";
 const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const date = new Date();
 const today = date.getDay();
-const API_KEY = "b3fb0d709d10c02822333fb492ae1f50";
+
 interface cityType {
   name: string;
 }
@@ -26,7 +27,8 @@ interface weatherType {
   };
   daily: [
     {
-      weather: {};
+      dt: number;
+      weather: [{ main: string }];
       temp: { max: number; min: number };
     }
   ];
@@ -41,7 +43,8 @@ export default function ModalWeather() {
     },
     daily: [
       {
-        weather: {},
+        dt: 0,
+        weather: [{ main: "" }],
         temp: { max: 0, min: 0 },
       },
     ],
@@ -50,6 +53,13 @@ export default function ModalWeather() {
   const [city, setCity] = useState<cityType>({ name: "" });
   //   const weatherParent = useRef();
   //   const btnRef = useRef(null)
+  // const [clicked, setClicked] = useState(false);
+  // const clickWeek = (e: { target: any }) => {
+  //   // if (clickRef.current === e.target) {
+  //   setClicked(!clicked);
+  //   console.log(e.target);
+  //   // }
+  // };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
@@ -61,8 +71,10 @@ export default function ModalWeather() {
       const { coords } = position;
       const lat = coords.latitude;
       const lon = coords.longitude;
+      // const cityUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+      // const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
       const cityUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
       try {
         const cityData = await axios
           .get(cityUrl)
@@ -83,6 +95,20 @@ export default function ModalWeather() {
     }
   }, []);
 
+  // const handleClickOutside = (e) => {
+  //   if (btnRef.current && !btnRef.current.contains(e.target)) {
+  //     btnRef.current.classList.remove("active");
+  //   } else {
+  //     btnRef.current.classList.add("active");
+  //   }
+  // };
+  // useEffect(() => {
+  //   document.addEventListener("click", handleClickOutside, true);
+  //   return () => {
+  //     document.removeEventListener("click", handleClickOutside, true);
+  //   };
+  // }, []);
+
   return (
     <StyledDiv>
       <Top>
@@ -99,8 +125,6 @@ export default function ModalWeather() {
       </Top>
       <Center>
         <i
-          // className={`${styles}.wi ${weather.current.weather[0].main}`}
-          // className={"Cloud"}
           className={"wi " + weather.current.weather[0].main}
           data-icon={"wi " + weather.current.weather[0].main}
         ></i>
@@ -110,13 +134,27 @@ export default function ModalWeather() {
       </Center>
       <Bottom>
         <ul>
-          {weather.daily.map((day, i) => (
+          {weather.daily.slice(0, 5).map((day, i) => (
             <WeeklyWeather
-              // key={day.dt}
+              key={day.dt}
               weather={day.weather}
               temp={day.temp}
-              week={week[today]}
-              // week[0] = 일요일 ~ week[6] = 토요일
+              week={
+                week[
+                  today + i === 7
+                    ? 0
+                    : today + i === 8
+                    ? 1
+                    : today + i === 9
+                    ? 2
+                    : today + i === 10
+                    ? 3
+                    : today + i
+                ]
+              }
+              index={i}
+              // onClick={clickWeek}
+              // clicked={clicked}
             />
           ))}
         </ul>
