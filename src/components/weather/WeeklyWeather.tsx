@@ -40,16 +40,25 @@ export default function WeeklyWeather({
 }: // onClick,
 // clicked,
 WeeklyWeatherProps) {
-  const clickRef = useRef(null);
+  const clickRef = useRef<HTMLLIElement>(null);
+  // const clickRef = useRef() as React.MutableRefObject<HTMLLIElement>;
   const [clicked, setClicked] = useState(false);
-  const clickWeek = (e: { target: any }) => {
-    // if (clickRef.current === e.target) {
+  const clickWeek = ({
+    target,
+  }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const clickEl = target as Element;
+    console.log(clickRef.current);
+    console.log(clickEl);
     setClicked(!clicked);
-    // clickRef.current.className = "active";
-    console.log(e.target);
-    // console.log(clickRef.current);
-    // }
   };
+
+  // if (clickRef.current !== null) {
+  // if (clickRef && clickRef.current && clickRef.current.parentNode) {
+  //   const $ul = clickRef.current.parentNode;
+  //   $ul.querySelector(".clicked").classList.remove(".clicked");
+
+  // }
+
   return (
     <StyledLi
       className={classNames("weekContainer", { clicked })}

@@ -53,6 +53,7 @@ export default function ModalWeather() {
   const [city, setCity] = useState<cityType>({ name: "" });
   //   const weatherParent = useRef();
   //   const btnRef = useRef(null)
+  
   // const [clicked, setClicked] = useState(false);
   // const clickWeek = (e: { target: any }) => {
   //   // if (clickRef.current === e.target) {
