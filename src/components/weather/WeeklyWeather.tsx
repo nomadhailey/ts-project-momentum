@@ -47,9 +47,13 @@ WeeklyWeatherProps) {
     target,
   }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const clickEl = target as Element;
-    console.log(clickRef.current);
-    console.log(clickEl);
-    setClicked(!clicked);
+    // if (clickRef && clickRef.current && clickRef.current.parentNode) {
+    if (clickRef && clickRef.current && clickRef.current.parentNode) {
+      const $ul = clickRef.current.parentNode;
+      console.log($ul);
+      $ul.querySelector(".clicked")!.classList.remove("clicked");
+      setClicked(!clicked);
+    }
   };
 
   // if (clickRef.current !== null) {
@@ -62,6 +66,7 @@ WeeklyWeatherProps) {
   return (
     <StyledLi
       className={classNames("weekContainer", { clicked })}
+      // className="clicked"
       onClick={clickWeek}
       ref={clickRef}
     >
