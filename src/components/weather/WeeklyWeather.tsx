@@ -40,21 +40,29 @@ export default function WeeklyWeather({
 }: // onClick,
 // clicked,
 WeeklyWeatherProps) {
-  const clickRef = useRef<HTMLLIElement>(null);
-  // const clickRef = useRef() as React.MutableRefObject<HTMLLIElement>;
+  // const clickRef = useRef<HTMLLIElement>(null);
+  const clickRef = useRef() as React.MutableRefObject<HTMLLIElement>;
   const [clicked, setClicked] = useState(false);
-  const clickWeek = ({
-    target,
-  }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const clickEl = target as Element;
+  const clickWeek = ({ currentTarget  }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const clickEl = currentTarget as Element;
     // if (clickRef && clickRef.current && clickRef.current.parentNode) {
-    if (clickRef && clickRef.current && clickRef.current.parentNode) {
-      const $ul = clickRef.current.parentNode;
-      console.log($ul);
-      $ul.querySelector(".clicked")!.classList.remove("clicked");
-      setClicked(!clicked);
-    }
-  };
+      const $ul = clickRef.current.parentNode as HTMLElement;
+      console.log(clickEl);
+      [...$ul.children].map((li) =>
+        li.classList.toggle("clicked", li === clickEl)
+      );
+    };
+      // $ul.querySelector(".clicked")!.classList.remove("clicked");
+      // clickEl.classList.add('clicked');
+    // }
+      // if (clickRef.current.classList.contains("clicked")) {
+      // console.log(clickRef.current);
+      // console.log([...$ul.children]);
+      // console.log($ul.querySelector(".clicked")); // null
+      // clickRef.current.classList.toggle("clicked");
+      // clickRef.current.className = "clicked";
+      // }
+      // setClicked(!clicked);
 
   // if (clickRef.current !== null) {
   // if (clickRef && clickRef.current && clickRef.current.parentNode) {
