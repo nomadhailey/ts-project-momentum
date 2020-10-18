@@ -28,7 +28,7 @@ interface weatherType {
   daily: [
     {
       dt: number;
-      weather: [{ main: string }];
+      weather: [{ main: string, description:string }];
       temp: { max: number; min: number };
     }
   ];
@@ -44,7 +44,7 @@ export default function ModalWeather() {
     daily: [
       {
         dt: 0,
-        weather: [{ main: "" }],
+        weather: [{ main: "", description:'' }],
         temp: { max: 0, min: 0 },
       },
     ],
@@ -86,8 +86,8 @@ export default function ModalWeather() {
           .then((res) => res.data)
           .catch((err) => console.log(`weatherGetError:${err}`));
 
-        console.log(cityData);
-        console.log(weatherData);
+        console.log('cityData',cityData);
+        console.log('weatherData',weatherData);
         setCity(cityData);
         setWeather(weatherData);
       } catch (err) {
@@ -115,6 +115,7 @@ export default function ModalWeather() {
       <Top>
         <div>
           <h4 className="city">{city.name}</h4>
+          <span></span>
           <p
             className="description"
             // data-description={weather.current.weather[0].description}
@@ -122,7 +123,7 @@ export default function ModalWeather() {
             {weather.current.weather[0].description}
           </p>
         </div>
-        <BsThreeDots />
+        {/* <BsThreeDots /> */}
       </Top>
       <Center>
         <i

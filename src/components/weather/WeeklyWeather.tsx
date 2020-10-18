@@ -24,7 +24,7 @@ const StyledLi = styled.li`
 interface WeeklyWeatherProps {
   // weather: {daily:[{weather:{}}]};
   key: number;
-  weather: [{ main: string }];
+  weather: [{ main: string; description:string; }];
   temp: { max: number; min: number };
   week: string;
   index: number;
@@ -43,38 +43,31 @@ WeeklyWeatherProps) {
   // const clickRef = useRef<HTMLLIElement>(null);
   const clickRef = useRef() as React.MutableRefObject<HTMLLIElement>;
   const [clicked, setClicked] = useState(false);
+  
   const clickWeek = ({ currentTarget  }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const clickEl = currentTarget as Element;
-    // if (clickRef && clickRef.current && clickRef.current.parentNode) {
-      const $ul = clickRef.current.parentNode as HTMLElement;
-      console.log(clickEl);
-      [...$ul.children].map((li) =>
-        li.classList.toggle("clicked", li === clickEl)
-      );
-    };
-      // $ul.querySelector(".clicked")!.classList.remove("clicked");
-      // clickEl.classList.add('clicked');
-    // }
-      // if (clickRef.current.classList.contains("clicked")) {
-      // console.log(clickRef.current);
-      // console.log([...$ul.children]);
-      // console.log($ul.querySelector(".clicked")); // null
-      // clickRef.current.classList.toggle("clicked");
-      // clickRef.current.className = "clicked";
-      // }
-      // setClicked(!clicked);
+    const $ul = clickRef.current.parentNode as HTMLElement;
+    const $bottom = $ul.parentNode as HTMLElement;
+    const $center = $bottom.previousSibling as HTMLElement;
+    const $centerIcon = $center.firstChild as HTMLElement;
+    const $centerTemp = $center.lastChild as HTMLElement;
+    const $top = $center.previousSibling as HTMLElement;
+    const $topDesc = $top.querySelector('p') as HTMLElement;
+    const $topSpan = $top.querySelector('span') as HTMLElement;   
+    [...$ul.children].map((li) =>
+      li.classList.toggle("clicked", li === clickEl)
+    );
+    if (index !== 0) {
+    $topDesc.textContent = weather[0].description;
+    $centerIcon.className='wi '+ weather[0].main;
+    $centerTemp.innerHTML=`${Math.round(temp.max)}° <span>${Math.round(temp.min)}°</span>`;
+    }
+  };
 
-  // if (clickRef.current !== null) {
-  // if (clickRef && clickRef.current && clickRef.current.parentNode) {
-  //   const $ul = clickRef.current.parentNode;
-  //   $ul.querySelector(".clicked").classList.remove(".clicked");
-
-  // }
 
   return (
     <StyledLi
       className={classNames("weekContainer", { clicked })}
-      // className="clicked"
       onClick={clickWeek}
       ref={clickRef}
     >
