@@ -116,13 +116,14 @@ export default function ModalWeather() {
         <div>
           <h4 className="city">{city.name}</h4>
           <span></span>
+          </div>
           <p
             className="description"
-            // data-description={weather.current.weather[0].description}
+            data-description={weather.current.weather[0].description}
           >
-            {weather.current.weather[0].description}
+            {(weather.current.weather[0].description).charAt(0).toUpperCase() + (weather.current.weather[0].description).slice(1)}
           </p>
-        </div>
+        
         {/* <BsThreeDots /> */}
       </Top>
       <Center>

@@ -21,6 +21,17 @@ const StyledLi = styled.li`
     }
   }
 `;
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 interface WeeklyWeatherProps {
   // weather: {daily:[{weather:{}}]};
   key: number;
@@ -57,13 +68,41 @@ WeeklyWeatherProps) {
     [...$ul.children].map((li) =>
       li.classList.toggle("clicked", li === clickEl)
     );
-    if (index !== 0) {
-    $topDesc.textContent = weather[0].description;
+    console.log($centerIcon.getAttribute('data-icon'));
+    console.log($centerIcon);
+    if (index === 0 ) {
+      $topDesc.textContent=$topDesc.getAttribute('data-description')!.charAt(0).toUpperCase() + $topDesc.getAttribute('data-description')!.slice(1);
+      $centerIcon.className=$centerIcon.getAttribute('data-icon')!;     
+      $centerTemp.textContent=$centerTemp.getAttribute('data-temp') + '°';
+    }
+     else {
+      $topDesc.textContent = weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1);
+      $topSpan.textContent=changeDays(week);
     $centerIcon.className='wi '+ weather[0].main;
     $centerTemp.innerHTML=`${Math.round(temp.max)}° <span>${Math.round(temp.min)}°</span>`;
     }
   };
 
+  function changeDays(week:string) {
+    switch (week) {
+      case "SUN":
+        return days[0];
+      case "MON":
+        return days[1];
+      case "TUE":
+        return days[2];
+      case "WED":
+        return days[3];
+      case "THU":
+        return days[4];
+      case "FRI":
+        return days[5];
+      case "SAT":
+        return days[6];
+      default:
+        return week;
+    }
+  }
 
   return (
     <StyledLi

@@ -15,7 +15,13 @@ export const StyledDiv = styled.div`
   border: 1px solid black;
 `;
 export const Top = styled.div`
+div {
   display: flex;
+  span {
+    margin-left:10px;
+    color : #aaa;
+  }
+}
   p {
     color: #aaa;
   }
@@ -28,6 +34,12 @@ export const Center = styled.div`
   i {
     margin: auto 0;
     margin-right: 10px;
+  }
+  p{
+  span {
+    font-size:2rem;
+    color: #aaa;
+  }
   }
 `;
 export const Bottom = styled.div`
