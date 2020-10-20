@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^2.1.2",
     "typings-for-css-modules-loader": "^1.7.0"
   }
 }
