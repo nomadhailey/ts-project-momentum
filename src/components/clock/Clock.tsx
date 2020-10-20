@@ -11,11 +11,11 @@ export default function Clock() {
   const tick = () => {
     setDate(new Date());
   };
-  console.log(hour, ":", min);
+  // console.log(hour, ":", min);
   useEffect(() => {
     tick();
     const timerId: number = setInterval(() => tick(), 1000);
-    console.log(hour, ":", min);
+    // console.log(hour, ":", min);
     return function cleanup() {
       clearInterval(timerId);
     };

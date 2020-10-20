@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalContainer, { Header, Main, Bottom } from "./GlobalStyle";
 import MainTodo from "../mainTodo/MainTodo";
-import Search from "../search/Search";
+import Links from "../links/Links";
 import Weather from "../weather/Weather";
 import Clock from "../clock/Clock";
 import Setting from "../setting/Setting";
@@ -12,7 +12,7 @@ export default function () {
   return (
     <GlobalContainer>
       <Header>
-        <Search />
+        <Links />
         <Weather />
       </Header>
       <div className="emptySpace" />

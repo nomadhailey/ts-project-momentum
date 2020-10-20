@@ -1,9 +1,20 @@
 import styled from "styled-components";
 
-export const StyledBtn = styled.button`
+export const StyledDiv = styled.div`
   cursor: pointer;
-  /* background: gray;
-  width: 100px;
-  height: 70px; */
-  padding: 15px;
+  padding: 10px;
+  .wrapper {
+    display:flex;
+    align-items:center;
+    font-size:1.5rem;
+    margin-bottom : -10px;
+    p{
+      margin-left: 5px;
+    }
+  }
+  span {
+    font-size: .8rem;
+    margin-left: 20px;
+    color : #aaa;
+  }
 `;

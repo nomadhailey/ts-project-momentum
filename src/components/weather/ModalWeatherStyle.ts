@@ -10,9 +10,20 @@ export const StyledDiv = styled.div`
   padding: 21px 21px 18px;
   border-radius: 5px;
   color: #ffffff;
-  /* background: rgba(255, 255, 255); */
   background: #0f0f0fec;
   border: 1px solid black;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    right: 1.5em;
+    border: 0.75rem solid transparent;
+    border-top: none;
+    border-bottom-color: #0f0f0fec;
+    background: transparent;
+  }
 `;
 export const Top = styled.div`
 div {

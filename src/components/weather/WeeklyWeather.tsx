@@ -1,26 +1,6 @@
 import React, { useState, useRef } from "react";
-import styled from "styled-components";
+import {StyledLi} from './WeeklyWeatherStyle';
 import classNames from "classnames";
-
-const StyledLi = styled.li`
-  text-align: center;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 5px;
-  &.clicked {
-    background: #333333;
-  }
-  div {
-    display: flex;
-    i {
-      font-size: 1rem;
-    }
-    .temp {
-      padding-left: 5px;
-    }
-  }
-`;
 
 const days = [
   "Sunday",
@@ -68,8 +48,7 @@ WeeklyWeatherProps) {
     [...$ul.children].map((li) =>
       li.classList.toggle("clicked", li === clickEl)
     );
-    console.log($centerIcon.getAttribute('data-icon'));
-    console.log($centerIcon);
+    console.log($bottom, $center, $top)
     if (index === 0 ) {
       $topDesc.textContent=$topDesc.getAttribute('data-description')!.charAt(0).toUpperCase() + $topDesc.getAttribute('data-description')!.slice(1);
       $centerIcon.className=$centerIcon.getAttribute('data-icon')!;     
