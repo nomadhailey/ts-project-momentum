@@ -6,7 +6,6 @@ import ModalSearch from "./ModalSearch";
 // import { IoLogoGoogle } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
 import naverLogo from "../../images/naver_square_20x20.png";
-import { isConstructorDeclaration } from "typescript";
 
 export default function Links() {
   const [searchModal, setSearchModal] = useState(false);
@@ -18,13 +17,13 @@ export default function Links() {
   const [style, setStyle] = useState(false);
   const openModal = () => {
     setSearchModal(true);
-    setStyle(searchModal ? true : false);
+    setStyle(true);
   };
   const onFocus = () => {
     setStyle(true);
     console.log("focus");
   };
-  const onFocusOut = () => {
+  const onFocusOut = (): void => {
     setStyle(false);
     console.log("blur");
   };
@@ -35,6 +34,7 @@ export default function Links() {
       google: true,
     });
     setSearchModal(false);
+    setStyle(true);
   };
   const toggleNaver = () => {
     setToggle({
@@ -42,6 +42,7 @@ export default function Links() {
       google: false,
     });
     setSearchModal(false);
+    setStyle(true);
   };
   const [keyword, setKeyword] = useState("");
   const onChangeKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +71,12 @@ export default function Links() {
           <span className="links">Links</span>
           <BiSearch className="searchIcon" />
         </div>
-        <div className="inputWrapper" onFocus={onFocus} onMouseOut={onFocusOut}>
+        <div
+          className="inputWrapper"
+          onFocus={onFocus}
+          onBlur={onFocusOut}
+          tabIndex={-1}
+        >
           <form
             onSubmit={submitSearch}
             className={classNames("form", { style })}

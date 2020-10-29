@@ -41,7 +41,7 @@ export const StyledDiv = styled.div`
     .form {
       position: relative;
       cursor : pointer;      
-      opacity : 0;
+      opacity : 0;      
       &:hover {
         opacity : 0.8;
       }   
@@ -49,6 +49,7 @@ export const StyledDiv = styled.div`
         opacity : 1;
       }
       input {
+        outline:none;
         background: transparent;
         background: yellow;
         border: none;
