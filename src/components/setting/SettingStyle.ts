@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledDiv = styled.div`
   background: brown;
-  cursor: pointer;
   padding-left: 10px;
   padding-bottom: 5px;
   .settingIcon {

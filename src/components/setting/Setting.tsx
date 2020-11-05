@@ -12,6 +12,7 @@ export default function Setting() {
   };
   return (
     <StyledDiv onClick={openSettingModal}>
+      <h2 className="a11yHidden">setting</h2>
       <IoMdSettings className={classNames("settingIcon", { modal })} />
       <ModalSetting />
       {/* {modal && <ModalSetting />} */}

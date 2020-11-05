@@ -45,7 +45,7 @@ export default function Clock() {
   }, []);
   return (
     <>
-      <StyledDiv>
+      <StyledDiv className="clockContainer">
         {hour < 10 ? `0${hour}` : hour}:{min < 10 ? `0${min}` : min}
       </StyledDiv>
       <Greeting>

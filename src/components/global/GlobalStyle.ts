@@ -16,6 +16,17 @@ const GlobalContainer = styled.div`
     height: 150px;
     border: 1px solid red;
   }
+  .hidden {
+    display: none;
+  }
+  .a11yHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
 `;
 export const Header = styled.header`
   height: 60px;

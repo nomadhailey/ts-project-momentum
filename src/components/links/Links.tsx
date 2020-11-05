@@ -64,7 +64,7 @@ export default function Links() {
   // modalsearch가 떠져 있는 상태에서 underline, icon opacity : 1
   return (
     <>
-      <StyledDiv>
+      <StyledDiv className="linksContainer">
         {/* <a href='chrome://apps' target='_blank' rel='noopener noreferrer'> */}
         {/* <a href='chrome-search://local-ntp/local-ntp.html' target='_blank' rel='noopener noreferrer'> */}
         <div className="linkWrapper">

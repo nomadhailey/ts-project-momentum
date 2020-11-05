@@ -25,7 +25,7 @@ interface weatherType {
   daily: [
     {
       dt: number;
-      weather: [{ main: string, description:string }];
+      weather: [{ main: string; description: string }];
       temp: { max: number; min: number };
     }
   ];
@@ -35,11 +35,11 @@ export default function Weather() {
   const [modal, setModal] = useState(false);
   const clickModal = () => {
     setModal(!modal);
-  }
+  };
   const onFocusOut = () => {
-    console.log('focusout');
+    console.log("focusout");
     setModal(false);
-  }
+  };
 
   const [weather, setWeather] = useState<weatherType>({
     current: {
@@ -49,7 +49,7 @@ export default function Weather() {
     daily: [
       {
         dt: 0,
-        weather: [{ main: "", description:'' }],
+        weather: [{ main: "", description: "" }],
         temp: { max: 0, min: 0 },
       },
     ],
@@ -79,8 +79,8 @@ export default function Weather() {
           .then((res) => res.data)
           .catch((err) => console.log(`weatherGetError:${err}`));
 
-        console.log('cityData',cityData);
-        console.log('weatherData',weatherData);
+        console.log("cityData", cityData);
+        console.log("weatherData", weatherData);
         setCity(cityData);
         setWeather(weatherData);
       } catch (err) {
@@ -90,17 +90,21 @@ export default function Weather() {
   }, []);
   return (
     <>
-    <StyledDiv onClick={clickModal}>      
-      <div className='wrapper'>
-      <i className={"wi " + weather.current.weather[0].main}
-          data-icon={"wi " + weather.current.weather[0].main}></i>
-      <p data-temp={Math.round(weather.current.temp)}>
-      {Math.round(weather.current.temp)}°
-      </p>
-      </div>
-      <span>{city.name}</span>      
-    </StyledDiv>
-      {modal &&<ModalWeather onFocusOut={onFocusOut} city={city} weather={weather} />}
-      </>
+      <StyledDiv onClick={clickModal} className="weatherContainer">
+        <div className="wrapper">
+          <i
+            className={"wi " + weather.current.weather[0].main}
+            data-icon={"wi " + weather.current.weather[0].main}
+          ></i>
+          <p data-temp={Math.round(weather.current.temp)}>
+            {Math.round(weather.current.temp)}°
+          </p>
+        </div>
+        <span>{city.name}</span>
+      </StyledDiv>
+      {modal && (
+        <ModalWeather onFocusOut={onFocusOut} city={city} weather={weather} />
+      )}
+    </>
   );
 }

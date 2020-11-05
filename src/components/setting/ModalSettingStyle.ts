@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { ModalStyle } from "../global/ModalStyle";
 
 export const StyledDiv = styled(ModalStyle)`
+  display: flex;
   bottom: 60px;
   left: 15px;
-  width: 400px;
-  height: 178px;
+  height: 450px;
+  width: 700px;
   padding: 21px 21px 18px;
   &::before {
     top: 100%;

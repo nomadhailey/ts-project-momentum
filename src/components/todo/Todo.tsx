@@ -9,7 +9,7 @@ export default function Todo() {
   };
   return (
     <>
-      <StyledDiv>
+      <StyledDiv className="todoContainer">
         <button onClick={clickTodo}>Todo</button>
         {modalIsShown && <ModalTodo />}
       </StyledDiv>
