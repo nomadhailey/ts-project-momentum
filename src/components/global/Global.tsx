@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalContainer, { Header, Main, Bottom } from "./GlobalStyle";
+import GlobalContainer, { Header, Main, Bottom } from "./Global.style";
 import MainTodo from "../mainTodo/MainTodo";
 import Links from "../links/Links";
 import Weather from "../weather/Weather";

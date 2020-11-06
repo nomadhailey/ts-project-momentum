@@ -1,5 +1,10 @@
 import React from "react";
-import { StyledDiv, StyledHeader, StyledUl } from "./GeneralStyle";
+import {
+  StyledDiv,
+  StyledHeader,
+  StyledUl,
+  StyledTheme,
+} from "./General.style";
 
 let generalList = [
   { id: 1, text: "Links", check: true },
@@ -106,20 +111,19 @@ export default function General() {
             </label>
           </li>
         ))}
-        {/* <li>
-          Links
-          <div className="viewCtr">
-            <input type="checkbox" />
-            <span className="btn"></span>
-          </div>
-        </li>
-        <li>Search</li>
-        <li>Weather</li>
-        <li>Focus</li>
-        <li>Todo</li>
-        <li>Quotes</li>
-        <li>Mantras</li> */}
       </StyledUl>
+      <StyledTheme>
+        <h4>CUSTOMIZE</h4>
+        <ul className="themeContainer">
+          <li>
+            <span>Theme</span>
+            <ul className="themeOptions">
+              <li className="Dark">Dark</li>
+              <li className="Light">Light</li>
+            </ul>
+          </li>
+        </ul>
+      </StyledTheme>
     </StyledDiv>
   );
 }

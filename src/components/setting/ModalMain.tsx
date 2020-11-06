@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledDiv } from "./ModalMainStyle";
+import { StyledDiv } from "./ModalMain.style";
 import General from "./General";
 
 export default function ModalMain() {

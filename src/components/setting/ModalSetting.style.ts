@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalStyle } from "../global/ModalStyle";
+import { ModalStyle } from "../global/GlobalModal.style";
 
 export const StyledDiv = styled(ModalStyle)`
   display: flex;
@@ -8,6 +8,7 @@ export const StyledDiv = styled(ModalStyle)`
   height: 450px;
   width: 700px;
   padding: 21px 21px 18px;
+  overflow: auto;
   &::before {
     top: 100%;
     left: 0.8em;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { StyledDiv } from "./LinksStyle";
+import { StyledDiv } from "./Links.style";
 import { BiSearch } from "react-icons/bi";
 import ModalSearch from "./ModalSearch";
 // import { IoLogoGoogle } from "react-icons/io";

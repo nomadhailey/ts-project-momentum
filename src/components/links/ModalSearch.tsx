@@ -1,7 +1,7 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import naverLogo from "../../images/naver_square_20x20.png";
-import { StyledDiv } from "./ModalSearchStyle";
+import { StyledDiv } from "./ModalSearch.style";
 
 interface ModalSearchProps {
   toggleNaver: () => void;

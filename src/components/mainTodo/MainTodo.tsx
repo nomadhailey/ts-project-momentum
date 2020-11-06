@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyledDiv } from "./MainTodoStyle";
+import { StyledDiv } from "./MainTodo.style";
 import classNames from "classnames";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 

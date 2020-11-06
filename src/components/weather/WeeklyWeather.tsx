@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { StyledLi } from "./WeeklyWeatherStyle";
+import { StyledLi } from "./WeeklyWeather.style";
 import classNames from "classnames";
 
 const days = [

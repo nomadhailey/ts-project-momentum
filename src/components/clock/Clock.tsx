@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyledDiv, Greeting } from "./ClockStyle";
+import { StyledDiv, Greeting } from "./Clock.style";
 import { BsThreeDots } from "react-icons/bs";
 
 export default function Clock() {

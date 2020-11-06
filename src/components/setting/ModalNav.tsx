@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledNav } from "./ModalNavStyle";
+import { StyledNav } from "./ModalNav.style";
 
 interface modalNav {
   children?: React.ReactNode;
@@ -20,9 +20,9 @@ export default function ModalNav({ children }: modalNav) {
   }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const clickEl = currentTarget as Element;
     const $ul = clickEl.parentNode as HTMLElement;
-    [...$ul.children].map((li) => {
-      li.classList.toggle("clicked", li === clickEl);
-    });
+    [...$ul.children].map((li) =>
+      li.classList.toggle("clicked", li === clickEl)
+    );
   };
 
   return (

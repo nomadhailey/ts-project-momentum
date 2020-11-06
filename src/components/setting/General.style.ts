@@ -58,3 +58,32 @@ export const StyledUl = styled.ul`
     }
   }
 `;
+
+export const StyledTheme = styled.div`
+  h4 {
+    padding: 10px;
+    padding-top: 20px;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    span {
+      padding: 10px;
+      cursor : pointer;
+    }
+    .themeOptions {
+      display: flex;
+      cursor : pointer;
+      font-size: .9rem;
+      li {
+        padding: 0 10px;
+        margin: auto;
+        border:none;
+        &:nth-of-type(1) {
+        border-right : 1px solid #ededed;        
+      }
+    }
+  }
+`;

@@ -1,54 +1,50 @@
-import React, { useState, useEffect, useRef } from "react";
-// import axios from "axios";
-import { StyledDiv, Top, Center, Bottom } from "./ModalWeatherStyle";
-import { BsThreeDots } from "react-icons/bs";
+import React from "react";
+import { StyledDiv, Top, Center, Bottom } from "./ModalWeather.style";
+// import { BsThreeDots } from "react-icons/bs";
 import WeeklyWeather from "./WeeklyWeather";
 
-// import "./weather-icons.css";
-// import "./weather-icons-wind.css";
-
-// const API_KEY = "b3fb0d709d10c02822333fb492ae1f50";
 const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const date = new Date();
 const today = date.getDay();
 
 interface ModalWeatherProps {
-  onFocusOut : () => void;
-  city : {name : string};
+  onFocusOut: () => void;
+  city: { name: string };
   weather: {
     current: {
-    weather: [
+      weather: [
+        {
+          description: string;
+          main: string;
+        }
+      ];
+      temp: number;
+    };
+    daily: [
       {
-        description: string;
-        main: string;
+        dt: number;
+        weather: [{ main: string; description: string }];
+        temp: { max: number; min: number };
       }
     ];
-    temp: number;
   };
-  daily: [
-    {
-      dt: number;
-      weather: [{ main: string, description:string }];
-      temp: { max: number; min: number };
-    }
-  ];
-}}
-export default function ModalWeather({city, weather}:ModalWeatherProps) {
- 
+}
+export default function ModalWeather({ city, weather }: ModalWeatherProps) {
   return (
     <StyledDiv>
       <Top>
         <div>
           <h4 className="city">{city.name}</h4>
           <span></span>
-          </div>
-          <p
-            className="description"
-            data-description={weather.current.weather[0].description}
-          >
-            {(weather.current.weather[0].description).charAt(0).toUpperCase() + (weather.current.weather[0].description).slice(1)}
-          </p>
-        
+        </div>
+        <p
+          className="description"
+          data-description={weather.current.weather[0].description}
+        >
+          {weather.current.weather[0].description.charAt(0).toUpperCase() +
+            weather.current.weather[0].description.slice(1)}
+        </p>
+
         {/* <BsThreeDots /> */}
       </Top>
       <Center>

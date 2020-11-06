@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalStyle } from "../global/ModalStyle";
+import { ModalStyle } from "../global/GlobalModal.style";
 
 export const StyledDiv = styled(ModalStyle)`
   top: 60px;

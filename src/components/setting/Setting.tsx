@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { IoMdSettings } from "react-icons/io";
-import { StyledDiv } from "./SettingStyle";
+import { StyledDiv } from "./Setting.style";
 import ModalSetting from "./ModalSetting";
 
 export default function Setting() {
