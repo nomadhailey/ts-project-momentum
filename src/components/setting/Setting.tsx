@@ -8,14 +8,14 @@ export default function Setting() {
   // const btnRef = useRef(null);
   const [modal, setModal] = useState(false);
   const openSettingModal = () => {
-    setModal(true);
+    setModal(!modal);
   };
   return (
     <StyledDiv onClick={openSettingModal}>
       <h2 className="a11yHidden">setting</h2>
       <IoMdSettings className={classNames("settingIcon", { modal })} />
-      <ModalSetting />
-      {/* {modal && <ModalSetting />} */}
+      {/* <ModalSetting /> */}
+      {modal && <ModalSetting />}
     </StyledDiv>
   );
 }
