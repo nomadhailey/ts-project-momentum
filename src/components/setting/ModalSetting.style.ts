@@ -15,4 +15,8 @@ export const StyledDiv = styled(ModalStyle)`
     border-bottom: none;
     border-top-color: #0f0f0fec;
   }
+  &.theme {
+    background: #fff;
+    color: #222;
+  }
 `;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { StyledDiv } from "./WeatherStyle";
+import { StyledDiv } from "./Weather.style";
 
 import ModalWeather from "./ModalWeather";
 

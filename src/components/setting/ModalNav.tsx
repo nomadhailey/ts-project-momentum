@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledNav } from "./ModalNav.style";
+// import { themeProps } from "./ModalMain";
 
 interface modalNav {
   children?: React.ReactNode;
@@ -14,7 +15,12 @@ let navList = [
   { id: 6, text: "Links" },
   { id: 7, text: "Balance" },
 ];
-export default function ModalNav({ children }: modalNav) {
+export default function ModalNav({
+  // theme,
+  // clickDark,
+  // clickLight,
+  children,
+}: modalNav) {
   const clickNav = ({
     currentTarget,
   }: React.MouseEvent<HTMLLIElement, MouseEvent>) => {

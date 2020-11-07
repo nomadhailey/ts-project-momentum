@@ -1,4 +1,7 @@
 import React from "react";
+import classNames from "classnames";
+import { themeProps } from "./ModalMain";
+
 import {
   StyledDiv,
   StyledHeader,
@@ -15,7 +18,7 @@ let generalList = [
   { id: 6, text: "Quotes", check: true },
 ];
 
-export default function General() {
+export default function General({ theme, clickDark, clickLight }: themeProps) {
   const settingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const $label = e.target.parentNode!.parentNode as Element;
     const $labelCtr = $label.getAttribute("data-ctr");
@@ -118,8 +121,15 @@ export default function General() {
           <li>
             <span>Theme</span>
             <ul className="themeOptions">
-              <li className="Dark">Dark</li>
-              <li className="Light">Light</li>
+              <li onClick={clickDark} className={classNames("dark", { theme })}>
+                Dark
+              </li>
+              <li
+                onClick={clickLight}
+                className={classNames("light", { theme })}
+              >
+                Light
+              </li>
             </ul>
           </li>
         </ul>
