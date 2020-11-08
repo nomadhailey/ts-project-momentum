@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const StyledDiv = styled.div`
   width: 480px;
   border: 1px solid blue;
+  position: absolute;
+  left: calc(50% - 240px);
+  top: 0px;
   &:hover {
     .quotes {
       transition: all 1s;
@@ -21,7 +24,6 @@ export const StyledDiv = styled.div`
     }
   }
   .author {
-    /* z-index: 1; */
     display: flex;
     justify-content: center;
     transform: translateY(-15px);

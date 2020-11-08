@@ -5,9 +5,10 @@ export const StyledDiv = styled.div`
   padding-left: 20px;
   display: flex;
   align-items: center;
-  /* background:pink; */
+  position:absolute;
+  top: 20px;
+    left: 10px;
   .linkWrapper {
-    background: yellow;
     position: relative;
     .links {
       background: blue;
@@ -28,16 +29,9 @@ export const StyledDiv = styled.div`
   }
   .inputWrapper {
     margin-left: 10px;
-    /* background:red; */
     height: 40px;
     display: flex;
     align-items: center;
-    /* border-bottom: 2px solid transparent; */
-    /* opacity : 0; */
-    &:hover {
-      /* border-bottom: 2px solid #ffffff; */
-      /* opacity: 0.8; */
-    }
     .form {
       position: relative;
       cursor : pointer;      
@@ -64,18 +58,15 @@ export const StyledDiv = styled.div`
       .underline {
         position: absolute;
         bottom : 0;
-        left:0;
-        /* z-index: 1; */        
+        left:0;        
         width: 100%;
-        /* border-bottom: 2px solid #fff; */
         border-bottom: 2px solid blue;               
       } 
       .toggledIcon {
         position: absolute;    
         right: 0px;
         bottom: 3px;
-        padding: 0 5px;
-        /* border: 1px solid black; */      
+        padding: 0 5px;        
         .naverBtn {
           position: absolute;
           right: 0;

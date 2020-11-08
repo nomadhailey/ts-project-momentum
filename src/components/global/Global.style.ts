@@ -32,6 +32,8 @@ export const Header = styled.header`
   height: 60px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  background: pink;
 `;
 export const Main = styled.div`
   margin: 0 auto;
@@ -46,5 +48,7 @@ export const Bottom = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 15px;
+  position: relative;
+  height: 50px;
 `;
 export default GlobalContainer;

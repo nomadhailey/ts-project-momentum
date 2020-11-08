@@ -4,6 +4,8 @@ export const StyledDiv = styled.div`
   cursor: pointer;
   padding-left: 10px;
   padding-bottom: 5px;
+  position: absolute;
+  top: 20px;
   .settingIcon {
     font-size: 1.4rem;
     opacity: 0.8;

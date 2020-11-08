@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ModalStyle } from "../global/GlobalModal.style";
 
 export const StyledDiv = styled(ModalStyle)`
-  top: 60px;
+  top: 70px;
   right: 15px;
   width: 400px;
   height: 178px;
