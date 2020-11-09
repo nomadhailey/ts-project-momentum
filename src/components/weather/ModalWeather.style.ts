@@ -17,6 +17,15 @@ export const StyledDiv = styled(ModalStyle)`
 export const Top = styled.div`
   div {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      flex-grow: 1;
+    }
+    .closeIcon {
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
     span {
       margin-left: 10px;
       color: #aaa;

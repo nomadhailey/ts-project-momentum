@@ -18,6 +18,5 @@ export const StyledDiv = styled.div`
   span {
     font-size: 0.8rem;
     margin-left: 20px;
-    color: #aaa;
   }
 `;

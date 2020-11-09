@@ -84,9 +84,6 @@ export const StyledTheme = styled.div`
         &:nth-of-type(1) {
         border-right : 1px solid #ededed;        
       }
-      /* &.theme {
-        font-weight : bold;
-      } */
     }
   }
 `;

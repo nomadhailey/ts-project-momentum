@@ -32,15 +32,6 @@ interface weatherType {
   loading: boolean;
 }
 export default function Weather() {
-  const [modal, setModal] = useState(false);
-  const clickModal = () => {
-    setModal(!modal);
-  };
-  const onFocusOut = () => {
-    console.log("focusout");
-    setModal(false);
-  };
-
   const [weather, setWeather] = useState<weatherType>({
     current: {
       weather: [{ description: "", main: "" }],
@@ -88,6 +79,13 @@ export default function Weather() {
       }
     }
   }, []);
+  const [modal, setModal] = useState(false);
+  const clickModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
   return (
     <>
       <StyledDiv onClick={clickModal} className="weatherContainer">
@@ -103,7 +101,7 @@ export default function Weather() {
         <span>{city.name}</span>
       </StyledDiv>
       {modal && (
-        <ModalWeather onFocusOut={onFocusOut} city={city} weather={weather} />
+        <ModalWeather city={city} weather={weather} closeModal={closeModal} />
       )}
     </>
   );

@@ -13,14 +13,11 @@ const days = [
 ];
 
 interface WeeklyWeatherProps {
-  // weather: {daily:[{weather:{}}]};
   key: number;
   weather: [{ main: string; description: string }];
   temp: { max: number; min: number };
   week: string;
   index: number;
-  // onClick: (e: { target: any }) => void;
-  // clicked: boolean;
 }
 export default function WeeklyWeather({
   key,
@@ -28,10 +25,7 @@ export default function WeeklyWeather({
   temp,
   week,
   index,
-}: // onClick,
-// clicked,
-WeeklyWeatherProps) {
-  // const clickRef = useRef<HTMLLIElement>(null);
+}: WeeklyWeatherProps) {
   const clickRef = useRef() as React.MutableRefObject<HTMLLIElement>;
   const [clicked, setClicked] = useState(false);
 

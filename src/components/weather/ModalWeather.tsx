@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import { StyledDiv, Top, Center, Bottom } from "./ModalWeather.style";
-// import { BsThreeDots } from "react-icons/bs";
+import { MdClose } from "react-icons/md";
 import WeeklyWeather from "./WeeklyWeather";
 
 const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -8,7 +8,6 @@ const date = new Date();
 const today = date.getDay();
 
 interface ModalWeatherProps {
-  onFocusOut: () => void;
   city: { name: string };
   weather: {
     current: {
@@ -28,13 +27,49 @@ interface ModalWeatherProps {
       }
     ];
   };
+  closeModal: () => void;
 }
-export default function ModalWeather({ city, weather }: ModalWeatherProps) {
+export default function ModalWeather({
+  city,
+  weather,
+  closeModal,
+}: ModalWeatherProps) {
+  const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  const escapeListener = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
+
+  const clickListener = useCallback(
+    (e: MouseEvent) => {
+      if (!(ref.current! as any).contains(e.target)) {
+        closeModal?.();
+      }
+    },
+    [closeModal, ref]
+  );
+
+  useEffect(() => {
+    // Attach the listeners on component mount.
+    document.addEventListener("click", clickListener);
+    document.addEventListener("keyup", escapeListener);
+    // Detach the listeners on component unmount.
+    return () => {
+      document.removeEventListener("click", clickListener);
+      document.removeEventListener("keyup", escapeListener);
+    };
+  }, []);
   return (
-    <StyledDiv>
+    <StyledDiv ref={ref}>
       <Top>
         <div>
           <h4 className="city">{city.name}</h4>
+          <MdClose className="closeIcon" onClick={closeModal} />
           <span></span>
         </div>
         <p
@@ -44,8 +79,6 @@ export default function ModalWeather({ city, weather }: ModalWeatherProps) {
           {weather.current.weather[0].description.charAt(0).toUpperCase() +
             weather.current.weather[0].description.slice(1)}
         </p>
-
-        {/* <BsThreeDots /> */}
       </Top>
       <Center>
         <i
