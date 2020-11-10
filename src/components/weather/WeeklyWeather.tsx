@@ -44,7 +44,6 @@ export default function WeeklyWeather({
     [...$ul.children].map((li) =>
       li.classList.toggle("clicked", li === clickEl)
     );
-    console.log($bottom, $center, $top);
     if (index === 0) {
       $topDesc.textContent =
         $topDesc.getAttribute("data-description")!.charAt(0).toUpperCase() +

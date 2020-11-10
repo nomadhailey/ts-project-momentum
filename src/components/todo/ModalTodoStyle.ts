@@ -11,7 +11,7 @@ export const StyledDiv = styled.div`
   max-height: 482.4px;
   /* height: auto; */
   height: 245px;
-  background: lightseagreen;
+  background: #ffffff;
   /* opacity: 0.8; */
   border-radius: 5px;
   border: 1px solid black;
@@ -41,7 +41,6 @@ export const Center = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
-  background: orange;
   margin: auto;
   /* position: absolute;
   top: 50%;

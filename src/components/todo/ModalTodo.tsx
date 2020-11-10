@@ -45,6 +45,26 @@ export default function ModalTodo() {
     setNewTodo(e.target.value);
   };
 
+  // checkedChange = (id) => {
+  //   this.setState((prevState) => {
+  //     return {
+  //       todos: prevState.todos.map((todo) =>
+  //         todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  //       ),
+  //     };
+  //   });
+  // };
+  const [checked, setChecked] = useState(false);
+  const checkTodo = (id: number) => {
+    console.log("id", id);
+    setTodos(
+      todos.map((todo: any) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+    // setChecked(todo.done);
+  };
+
   return (
     <StyledDiv className={classNames("todoWrapper", { todoListIsShown })}>
       <Top>
@@ -61,7 +81,7 @@ export default function ModalTodo() {
 
       <Center>
         {todoListIsShown ? (
-          <TodoList todos={todos} />
+          <TodoList todos={todos} checked={checked} checkTodo={checkTodo} />
         ) : (
           <div className="instruction">
             <p>Add a todo to get started</p>

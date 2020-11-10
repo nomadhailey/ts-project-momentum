@@ -4,3 +4,4 @@
 [0927/202230.159:ERROR:process_info.cc(359)] UncheckedAllocate
 [1001/223530.800:ERROR:process_info.cc(359)] UncheckedAllocate
 [1001/223533.152:ERROR:process_info.cc(359)] UncheckedAllocate
+[1110/141257.703:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
