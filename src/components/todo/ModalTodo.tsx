@@ -59,9 +59,7 @@ export default function ModalTodo() {
   };
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((todo: any) => todo.id !== id));
-    console.log(todos);
   };
-  console.log(todos);
   return (
     <StyledDiv className={classNames("todoWrapper", { todoListIsShown })}>
       <Top>

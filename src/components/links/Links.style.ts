@@ -11,7 +11,7 @@ export const StyledDiv = styled.div`
   .linkWrapper {
     position: relative;
     .links {
-      background: blue;
+      /* background: blue; */
       opacity: 0.8;
       &:hover {
         opacity: 1;
@@ -21,7 +21,7 @@ export const StyledDiv = styled.div`
       opacity: 1;
       font-size: 1.2rem;
       margin-left: 15px;
-      background: green;
+      /* background: green; */
       position: absolute;
       top: 3px;
       z-index:10;
@@ -45,7 +45,7 @@ export const StyledDiv = styled.div`
       input {
         outline:none;
         background: transparent;
-        background: yellow;
+        /* background: yellow; */
         border: none;
         outline: none;
         width: 200px;
@@ -60,7 +60,7 @@ export const StyledDiv = styled.div`
         bottom : 0;
         left:0;        
         width: 100%;
-        border-bottom: 2px solid blue;               
+        /* border-bottom: 2px solid blue;                */
       } 
       .toggledIcon {
         position: absolute;    

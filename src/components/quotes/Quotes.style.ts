@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledDiv = styled.div`
   width: 480px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   position: absolute;
   left: calc(50% - 240px);
   top: 0px;

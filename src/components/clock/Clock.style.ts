@@ -11,10 +11,10 @@ export const Greeting = styled.div`
   display: flex;
   justify-content: center;
   .greetingWrapper {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
   .nameWrapper {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     form {
       /* max-width: 12em; */
       display: inline-block;

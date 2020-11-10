@@ -24,9 +24,22 @@ export default function TodoList({
 }: TodoListProps) {
   const [editIsShown, setEditIsShown] = useState(false);
 
-  const clickDots = (e: React.MouseEvent) => {
+  const clickDots = (id: number) => {
+    // const result = todos.map((todo: any) => (todo.id === id ? true : false));
+    // console.log(id);
+    // setEditIsShown(!editIsShown);
+    // setEditIsShown(
+    //   todos.filter((todo: any) => (todo.id === id ? true : false))
+    // );
+    const result = todos.find((todo: any) => todo.id === id);
+    if (result?.id !== id) return;
     setEditIsShown(!editIsShown);
+    console.log(editIsShown);
   };
+  // const clickDots = (e: React.MouseEvent) => {
+  //   if (e.target !== todo.id) return;
+  //   setEditIsShown(!editIsShown);
+  // };
 
   return (
     <StyledUl>
@@ -44,11 +57,15 @@ export default function TodoList({
                 <span className={classNames("todo", { checked: todo.done })}>
                   {todo.content}
                 </span>
-                <BsThreeDots className="listThreeDots" onClick={clickDots} />
-                {editIsShown && (
-                  <ModalEdit deleteTodo={() => deleteTodo(todo.id)} />
-                )}
               </label>
+              <BsThreeDots
+                className="listThreeDots"
+                onClick={() => clickDots(todo.id)}
+                // onClick={clickDots}
+              />
+              {editIsShown && (
+                <ModalEdit deleteTodo={() => deleteTodo(todo.id)} />
+              )}
             </li>
           )
       )}

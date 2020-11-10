@@ -2,9 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  position: fixed;
+  /* position: fixed;
   bottom: 100px;
-  right: 40px;
+  right: 40px; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   z-index: 10;
   background: #ededed;

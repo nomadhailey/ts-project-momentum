@@ -14,7 +14,7 @@ const GlobalContainer = styled.div`
     width: 100vw;
     /* height: 17vh; */
     height: 150px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
   .hidden {
     display: none;
@@ -33,14 +33,14 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   position: relative;
-  background: pink;
+  /* background: pink; */
 `;
 export const Main = styled.div`
   margin: 0 auto;
   height: 225px;
   width: 100vw;
   text-align: center;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   color: white;
 `;
 export const Bottom = styled.div`
