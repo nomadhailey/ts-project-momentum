@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { StyledDiv, Top, Center, Bottom } from "./ModalTodoStyle";
 import TodoList from "./TodoList";
 import { BsThreeDots } from "react-icons/bs";
@@ -8,7 +8,6 @@ export default function ModalTodo() {
   const [inputIsShown, setInputIsShown] = useState(false);
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([] as any);
-  // const [todos, setTodos] = useState<T>([]:T);
   const { id, content, done } = todos;
   const [todoListIsShown, setTodoListIsShown] = useState(false);
   useEffect(() => {
@@ -28,7 +27,7 @@ export default function ModalTodo() {
   let generateId = todos.length
     ? Math.max(...todos.map((todo: { id: any }) => todo.id)) + 1
     : 1;
-  // const onSubmitNewTodo = (e: { preventDefault: () => void }) => {
+
   const onSubmitNewTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTodoListIsShown(true);
@@ -39,32 +38,30 @@ export default function ModalTodo() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  useEffect(() => {
+    if (todos) setTodoListIsShown(true);
+    setInputIsShown(true);
+  }, []);
+
   const onChangeNewTodo = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setNewTodo(e.target.value);
   };
 
-  // checkedChange = (id) => {
-  //   this.setState((prevState) => {
-  //     return {
-  //       todos: prevState.todos.map((todo) =>
-  //         todo.id === id ? { ...todo, completed: !todo.completed } : todo
-  //       ),
-  //     };
-  //   });
-  // };
   const [checked, setChecked] = useState(false);
   const checkTodo = (id: number) => {
-    console.log("id", id);
     setTodos(
       todos.map((todo: any) =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
       )
     );
-    // setChecked(todo.done);
   };
-
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter((todo: any) => todo.id !== id));
+    console.log(todos);
+  };
+  console.log(todos);
   return (
     <StyledDiv className={classNames("todoWrapper", { todoListIsShown })}>
       <Top>
@@ -81,7 +78,12 @@ export default function ModalTodo() {
 
       <Center>
         {todoListIsShown ? (
-          <TodoList todos={todos} checked={checked} checkTodo={checkTodo} />
+          <TodoList
+            todos={todos}
+            checked={checked}
+            checkTodo={checkTodo}
+            deleteTodo={deleteTodo}
+          />
         ) : (
           <div className="instruction">
             <p>Add a todo to get started</p>

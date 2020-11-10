@@ -4,7 +4,7 @@ import axios from "axios";
 // const getImages = async () => {
 //     const API_KEYS = 'K0SxPXMzJfgTYEaUk6gV6XVQd2Qc3yrWyyvlxALkHnk';
 //     const collection =9585833;
-//     const URL = `https://api.unsplash.com/photos/random/?collections=${collectionId}&q=99&fm=jpg&crop=entropy&w=2048&cs=tinysrgb&fit=max&client_id=${API_KEYS}`;
+//     const URL = `https://api.unsplash.com/photos/random/?collections=${collectionId}&q=99&fm=jpg&crop=entropy&w=2048&cs=tinysrgb&fit=max&client_id=${K0SxPXMzJfgTYEaUk6gV6XVQd2Qc3yrWyyvlxALkHnk}`;
 
 //     const res = await fetch(URL).catch(e=>console.log('ErrorType:', e))
 //     const {user, urls, location, description, links} = await res.json()

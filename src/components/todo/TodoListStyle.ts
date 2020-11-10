@@ -6,8 +6,8 @@ export const StyledUl = styled.ul`
   margin: 0;
   padding: 15px;
   box-sizing: border-box;
-
-  background: transparent;
+  /* background: transparent; */
+  background: green;
   border: 1px solid red;
   li {
     position: relative;

@@ -20,7 +20,6 @@ export const StyledDiv = styled.div`
   box-sizing: border-box;
   &.todoListIsShown {
     height: auto;
-    background: yellow;
   }
 `;
 export const Top = styled.div`
@@ -42,6 +41,7 @@ export const Center = styled.div`
   width: 100%;
   height: auto;
   margin: auto;
+  background: pink;
   /* position: absolute;
   top: 50%;
   left: 50%;

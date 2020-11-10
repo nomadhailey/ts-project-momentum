@@ -20,11 +20,12 @@ const StyledDiv = styled.div`
     }
   }
 `;
-export default function ModalEdit() {
+interface modalEditProps {
+  deleteTodo: () => void;
+}
+export default function ModalEdit({ deleteTodo }: modalEditProps) {
   const editTodo = () => {};
-  const deleteTodo = (e: { target: any }) => {
-    console.log(e.target); // <li>Delete</li>
-  };
+
   return (
     <StyledDiv>
       <ul>
