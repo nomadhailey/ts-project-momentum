@@ -6,7 +6,7 @@
 September 25th, 2020 ~
 
 ## Screenshots
-![](C:\Users\haeri\Desktop\development\React\project\ts-project-momentum\src\images\screenshot.JPG)
+<img src="https://github.com/nomadhailey/ts-project-momentum/blob/master/src/images/screenshot.JPG"></img> 
 
 ## Tech/framework used
 - HTML, CSS
